@@ -48,7 +48,7 @@ Since this is my [personal site](https://minar.ml), you have to replace some ass
 6. To **test** the site, just open the `index.html` in Chrome or in your favorite browser. Use the dev tools to show the **mobile version**, if you need it.
 
 ## What about the domain?
-I use the `.ml` domain: it is free and renewable, you can learn more [here](https://my.freenom.com). Regarding the hosting, you have a lot of potential options, but my advice is to use **Firebase**:
+Look [here](https://my.freenom.com). Regarding the hosting, you have a lot of potential options, but my advice is to use **Firebase**:
 - First thing first, [sign up or login](https://firebase.google.com/).
 - Click on **go to console**.
 - Start a **new project**.
