@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Checkout | PEAK</title>
+
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="page-shell">
+
+    <header class="site-header">
+
+      <a class="brand" href="index.html">
+        PEAK
+      </a>
+
+      <span>
+        Secure Checkout
+      </span>
+
+    </header>
+
+
+    <main class="checkout-page">
+
+      <section class="checkout-form-section">
+
+        <p class="eyebrow dark-eyebrow">
+          CHECKOUT
+        </p>
+
+        <h1>
+          Shipping details
+        </h1>
+
+
+        <form
+          id="checkoutForm"
+          class="checkout-form"
+        >
+
+          <label>
+            Email
+
+            <input
+              type="email"
+              required
+              placeholder="you@example.com"
+            >
+          </label>
+
+
+          <div class="form-grid">
+
+            <label>
+              First name
+
+              <input
+                required
+                type="text"
+              >
+            </label>
+
+
+            <label>
+              Last name
+
+              <input
+                required
+                type="text"
+              >
+            </label>
+
+          </div>
+
+
+          <label>
+            Address
+
+            <input
+              required
+              type="text"
+              placeholder="Street address"
+            >
+          </label>
+
+
+          <div class="form-grid">
+
+            <label>
+              City
+
+              <input
+                required
+                type="text"
+              >
+            </label>
+
+
+            <label>
+              State
+
+              <input
+                required
+                type="text"
+              >
+            </label>
+
+          </div>
+
+
+          <div class="form-grid">
+
+            <label>
+              PIN code
+
+              <input
+                required
+                type="text"
+              >
+            </label>
+
+
+            <label>
+              Phone
+
+              <input
+                required
+                type="tel"
+              >
+            </label>
+
+          </div>
+
+
+          <h2>
+            Payment
+          </h2>
+
+
+          <div class="payment-demo">
+
+            Demo checkout only — no real payment
+            information is collected.
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="place-order-button"
+          >
+            Place Order
+          </button>
+
+        </form>
+
+      </section>
+
+
+      <aside class="checkout-summary">
+
+        <h2>
+          Your Order
+        </h2>
+
+        <div id="checkoutItems"></div>
+
+
+        <div class="summary-total">
+
+          <span>
+            Total
+          </span>
+
+          <strong id="checkoutTotal">
+            ₹0
+          </strong>
+
+        </div>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+
+  <script src="assets/js/store.js"></script>
+
+  <script>
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const buyMode =
+      params.get("mode") === "buy";
+
+
+    let checkoutItems;
+
+
+    if (buyMode) {
+
+      const item =
+        JSON.parse(
+          localStorage.getItem("peakBuyNow")
+        );
+
+      checkoutItems =
+        item ? [item] : [];
+
+    } else {
+
+      checkoutItems =
+        getCart();
+
+    }
+
+
+    const container =
+      document.getElementById(
+        "checkoutItems"
+      );
+
+
+    let total = 0;
+
+
+    checkoutItems.forEach(item => {
+
+      const product =
+        getProduct(item.id);
+
+
+      const itemTotal =
+        product.price * item.quantity;
+
+
+      total += itemTotal;
+
+
+      container.innerHTML += `
+        <div class="checkout-item">
+
+          <img
+            src="${product.image}"
+            alt="${product.name}"
+          >
+
+          <div>
+
+            <strong>
+              ${product.name}
+            </strong>
+
+            <p>
+              Size ${item.size}
+              × ${item.quantity}
+            </p>
+
+          </div>
+
+          <strong>
+            ${formatPrice(itemTotal)}
+          </strong>
+
+        </div>
+      `;
+
+    });
+
+
+    document.getElementById(
+      "checkoutTotal"
+    ).textContent =
+      formatPrice(total);
+
+
+    document
+      .getElementById("checkoutForm")
+      .addEventListener(
+        "submit",
+        function(event) {
+
+          event.preventDefault();
+
+
+          alert(
+            "Order placed successfully! This is a demo checkout."
+          );
+
+
+          if (!buyMode) {
+
+            localStorage.removeItem(
+              "peakCart"
+            );
+
+          }
+
+
+          localStorage.removeItem(
+            "peakBuyNow"
+          );
+
+
+          window.location.href =
+            "index.html";
+
+        }
+      );
+
+  </script>
+
+</body>
+</html>
