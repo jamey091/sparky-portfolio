@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Your Cart | PEAK</title>
+
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <div class="page-shell">
+
+    <header class="site-header">
+
+      <a class="brand" href="index.html">
+        PEAK
+      </a>
+
+      <a href="index.html#shop">
+        Continue Shopping
+      </a>
+
+    </header>
+
+
+    <main class="cart-page">
+
+      <h1>
+        Your Cart
+      </h1>
+
+      <div class="cart-layout">
+
+        <section
+          class="cart-items"
+          id="cartItems"
+        ></section>
+
+
+        <aside class="cart-summary">
+
+          <h2>
+            Order Summary
+          </h2>
+
+          <div class="summary-row">
+
+            <span>
+              Subtotal
+            </span>
+
+            <strong id="cartSubtotal">
+              ₹0
+            </strong>
+
+          </div>
+
+          <div class="summary-row">
+
+            <span>
+              Shipping
+            </span>
+
+            <strong>
+              FREE
+            </strong>
+
+          </div>
+
+          <div class="summary-total">
+
+            <span>
+              Total
+            </span>
+
+            <strong id="cartTotal">
+              ₹0
+            </strong>
+
+          </div>
+
+          <a
+            href="checkout.html"
+            class="checkout-button"
+            id="checkoutButton"
+          >
+            Checkout
+          </a>
+
+        </aside>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <script src="assets/js/store.js"></script>
+
+  <script>
+
+    function renderCart() {
+
+      const container =
+        document.getElementById("cartItems");
+
+      const cart =
+        getCart();
+
+
+      if (cart.length === 0) {
+
+        container.innerHTML = `
+          <div class="empty-cart">
+
+            <h2>
+              Your cart is empty.
+            </h2>
+
+            <a
+              href="index.html#shop"
+              class="btn btn-dark"
+            >
+              Shop Products
+            </a>
+
+          </div>
+        `;
+
+        document.getElementById(
+          "checkoutButton"
+        ).style.display = "none";
+
+      } else {
+
+        container.innerHTML = "";
+
+
+        cart.forEach((item, index) => {
+
+          const product =
+            getProduct(item.id);
+
+
+          container.innerHTML += `
+            <article class="cart-item">
+
+              <img
+                src="${product.image}"
+                alt="${product.name}"
+              >
+
+              <div class="cart-item-info">
+
+                <h3>
+                  ${product.name}
+                </h3>
+
+                <p>
+                  Size: ${item.size}
+                </p>
+
+                <strong>
+                  ${formatPrice(product.price)}
+                </strong>
+
+                <div class="quantity-controls">
+
+                  <button
+                    onclick="updateQuantity(${index}, -1)"
+                  >
+                    −
+                  </button>
+
+                  <span>
+                    ${item.quantity}
+                  </span>
+
+                  <button
+                    onclick="updateQuantity(${index}, 1)"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+                <button
+                  class="remove-button"
+                  onclick="removeItem(${index})"
+                >
+                  Remove
+                </button>
+
+              </div>
+
+            </article>
+          `;
+
+        });
+
+      }
+
+
+      document.getElementById(
+        "cartSubtotal"
+      ).textContent =
+        formatPrice(cartTotal());
+
+
+      document.getElementById(
+        "cartTotal"
+      ).textContent =
+        formatPrice(cartTotal());
+
+    }
+
+
+    function updateQuantity(index, amount) {
+
+      changeQuantity(index, amount);
+
+      renderCart();
+
+    }
+
+
+    function removeItem(index) {
+
+      removeFromCart(index);
+
+      renderCart();
+
+    }
+
+
+    renderCart();
+
+  </script>
+
+</body>
+</html>

@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Peak Performance Sportswear</title>
-
-  <meta
-    name="description"
-    content="Peak Performance Sportswear - modern performance apparel for training, running and everyday movement."
-  >
+  <title>PEAK Performance Sportswear</title>
 
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
 
-  <!-- Animated particle background -->
   <div id="particles-js"></div>
 
   <div class="page-shell">
 
-    <!-- Header -->
     <header class="site-header">
 
-      <a class="brand" href="#home">
+      <a class="brand" href="index.html">
         PEAK
       </a>
 
-      <nav class="site-nav">
-        <a href="#home">Home</a>
-        <a href="#shop">Apparel</a>
-        <a href="#collections">Collections</a>
+      <button class="menu-toggle" id="menuToggle">
+        ☰
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#shop">Shop</a>
+        <a href="#men">Men</a>
+        <a href="#women">Women</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
 
-      <a class="header-cta" href="#shop">
-        Shop
+      <a class="cart-link" href="cart.html">
+        Cart (<span class="cart-count">0</span>)
       </a>
 
     </header>
@@ -45,8 +42,7 @@
 
     <main>
 
-      <!-- Hero -->
-      <section class="hero" id="home">
+      <section class="hero">
 
         <div class="hero-content">
 
@@ -60,560 +56,99 @@
           </h1>
 
           <p class="hero-copy">
-            Premium sportswear for training, running,
-            recovery and everyday movement.
+            Premium training and activewear
+            designed around movement.
           </p>
 
-          <div class="hero-actions">
-
-            <a
-              class="btn btn-primary"
-              href="#shop"
-            >
-              Shop New Arrivals
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="#collections"
-            >
-              Explore Collections
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="hero-visual">
-
-          <div class="hero-card">
-
-            <p class="eyebrow">
-              NEW DROP
-            </p>
-
-            <h2>
-              Performance Series 01
-            </h2>
-
-            <p>
-              Lightweight, breathable and designed
-              for movement.
-            </p>
-
-            <a href="#shop" class="text-link">
-              Explore the collection →
-            </a>
-
-          </div>
+          <a class="btn btn-primary" href="#shop">
+            Shop Collection
+          </a>
 
         </div>
 
       </section>
 
 
-      <!-- Category Navigation -->
-      <section class="category-strip">
-
-        <a href="#men">
-          Men's
-        </a>
-
-        <a href="#women">
-          Women's
-        </a>
-
-        <a href="#training">
-          Training
-        </a>
-
-        <a href="#running">
-          Running
-        </a>
-
-      </section>
-
-
-      <!-- Shop -->
       <section class="section light-panel" id="shop">
 
         <div class="section-heading">
 
           <div>
-
             <p class="eyebrow dark-eyebrow">
-              SHOP
+              NEW COLLECTION
             </p>
 
             <h2>
-              Featured apparel
+              Shop apparel
             </h2>
-
           </div>
 
-          <a class="view-all" href="#shop">
-            View all →
-          </a>
-
         </div>
 
 
-        <div class="product-grid">
-
-          <!-- Product 1 -->
-          <article class="product-card" id="men">
-
-            <div class="product-image product-image-1">
-              <span>MEN</span>
-            </div>
-
-            <div class="product-info">
-
-              <div>
-                <h3>
-                  Velocity Training Tee
-                </h3>
-
-                <p>
-                  Lightweight training shirt
-                </p>
-              </div>
-
-              <strong>
-                $38
-              </strong>
-
-            </div>
-
-            <a href="#" class="product-link">
-              Shop now →
-            </a>
-
-          </article>
-
-
-          <!-- Product 2 -->
-          <article class="product-card" id="women">
-
-            <div class="product-image product-image-2">
-              <span>WOMEN</span>
-            </div>
-
-            <div class="product-info">
-
-              <div>
-                <h3>
-                  Core Sculpt Leggings
-                </h3>
-
-                <p>
-                  High-rise performance leggings
-                </p>
-              </div>
-
-              <strong>
-                $64
-              </strong>
-
-            </div>
-
-            <a href="#" class="product-link">
-              Shop now →
-            </a>
-
-          </article>
-
-
-          <!-- Product 3 -->
-          <article class="product-card" id="training">
-
-            <div class="product-image product-image-3">
-              <span>TRAINING</span>
-            </div>
-
-            <div class="product-info">
-
-              <div>
-                <h3>
-                  Power Training Shorts
-                </h3>
-
-                <p>
-                  Stretch shorts for hard sessions
-                </p>
-              </div>
-
-              <strong>
-                $46
-              </strong>
-
-            </div>
-
-            <a href="#" class="product-link">
-              Shop now →
-            </a>
-
-          </article>
-
-
-          <!-- Product 4 -->
-          <article class="product-card" id="running">
-
-            <div class="product-image product-image-4">
-              <span>RUNNING</span>
-            </div>
-
-            <div class="product-info">
-
-              <div>
-                <h3>
-                  Aero Run Jacket
-                </h3>
-
-                <p>
-                  Lightweight outer layer
-                </p>
-              </div>
-
-              <strong>
-                $92
-              </strong>
-
-            </div>
-
-            <a href="#" class="product-link">
-              Shop now →
-            </a>
-
-          </article>
-
-        </div>
+        <div class="product-grid" id="productGrid"></div>
 
       </section>
 
 
-      <!-- Collections -->
-      <section
-        class="section collections-section"
-        id="collections"
-      >
-
-        <div class="section-heading">
-
-          <div>
-
-            <p class="eyebrow">
-              COLLECTIONS
-            </p>
-
-            <h2>
-              Train your way.
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="collection-grid">
-
-          <article class="collection-card collection-dark">
-
-            <p class="eyebrow">
-              TRAIN
-            </p>
-
-            <h3>
-              Built for hard sessions.
-            </h3>
-
-            <p>
-              Durable and flexible performance gear
-              for lifting, conditioning and high-intensity training.
-            </p>
-
-            <a
-              href="#training"
-              class="btn btn-light"
-            >
-              Shop Training
-            </a>
-
-          </article>
-
-
-          <article class="collection-card collection-light">
-
-            <p class="eyebrow dark-eyebrow">
-              RUN
-            </p>
-
-            <h3>
-              Made for every mile.
-            </h3>
-
-            <p>
-              Lightweight layers built for speed,
-              comfort and consistent movement.
-            </p>
-
-            <a
-              href="#running"
-              class="btn btn-dark"
-            >
-              Shop Running
-            </a>
-
-          </article>
-
-        </div>
-
-      </section>
-
-
-      <!-- Benefits -->
-      <section class="section light-panel">
-
-        <div class="section-heading">
-
-          <div>
-
-            <p class="eyebrow dark-eyebrow">
-              BUILT FOR PERFORMANCE
-            </p>
-
-            <h2>
-              Designed around movement.
-            </h2>
-
-          </div>
-
-        </div>
-
-
-        <div class="benefits">
-
-          <div>
-
-            <span class="benefit-number">
-              01
-            </span>
-
-            <h3>
-              Lightweight
-            </h3>
-
-            <p>
-              Comfortable fabrics engineered
-              to move with you.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <span class="benefit-number">
-              02
-            </span>
-
-            <h3>
-              Breathable
-            </h3>
-
-            <p>
-              Built to stay comfortable
-              during demanding sessions.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <span class="benefit-number">
-              03
-            </span>
-
-            <h3>
-              Durable
-            </h3>
-
-            <p>
-              Designed for repeat workouts
-              and everyday wear.
-            </p>
-
-          </div>
-
-
-          <div>
-
-            <span class="benefit-number">
-              04
-            </span>
-
-            <h3>
-              Versatile
-            </h3>
-
-            <p>
-              Performance styling that works
-              beyond the gym.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- Brand Statement -->
       <section class="statement-section">
 
         <p class="eyebrow">
-          OUR STANDARD
+          PEAK STANDARD
         </p>
 
         <h2>
           Performance without compromise.
         </h2>
 
-        <p class="statement-copy">
-          Peak Performance combines clean design,
-          functional construction and athletic styling
-          for people who move every day.
-        </p>
-
       </section>
 
 
-      <!-- About -->
-      <section
-        class="section light-panel"
-        id="about"
-      >
+      <section class="section light-panel" id="about">
 
         <div class="about-layout">
 
           <div>
-
             <p class="eyebrow dark-eyebrow">
               ABOUT PEAK
             </p>
 
             <h2>
-              Sportswear built around movement.
+              Made for movement.
             </h2>
-
           </div>
 
           <div class="about-copy">
 
             <p>
-              Peak Performance is a modern sportswear
-              concept focused on clean, functional apparel
-              for training, running and everyday active lifestyles.
+              PEAK creates modern sportswear
+              for training, running and active lifestyles.
             </p>
 
             <p>
-              The goal is simple:
-              make athletic clothing that looks sharp,
-              feels comfortable and performs when it matters.
+              Functional design, athletic construction
+              and clean styling come together
+              in every collection.
             </p>
 
           </div>
 
         </div>
-
-      </section>
-
-
-      <!-- Newsletter -->
-      <section class="newsletter">
-
-        <div>
-
-          <p class="eyebrow">
-            JOIN PEAK
-          </p>
-
-          <h2>
-            Get first access to new drops.
-          </h2>
-
-        </div>
-
-        <form class="newsletter-form">
-
-          <input
-            type="email"
-            placeholder="Enter your email address"
-          >
-
-          <button type="button">
-            Join
-          </button>
-
-        </form>
 
       </section>
 
     </main>
 
 
-    <!-- Footer -->
-    <footer
-      class="site-footer"
-      id="contact"
-    >
+    <footer class="site-footer">
 
-      <div>
+      <strong class="brand">
+        PEAK
+      </strong>
 
-        <a
-          class="brand footer-brand"
-          href="#home"
-        >
-          PEAK
-        </a>
-
-        <p>
-          Performance sportswear
-          for everyday movement.
-        </p>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="#men">
-          Men
-        </a>
-
-        <a href="#women">
-          Women
-        </a>
-
-        <a href="#training">
-          Training
-        </a>
-
-        <a href="#running">
-          Running
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-      </div>
-
-
-      <p class="copyright">
+      <p>
         © <span id="year"></span>
-        Peak Performance Sportswear
+        PEAK Performance Sportswear
       </p>
 
     </footer>
@@ -621,15 +156,74 @@
   </div>
 
 
-  <!-- Particle scripts -->
+  <script src="assets/js/store.js"></script>
   <script src="assets/js/particles.js"></script>
   <script src="assets/js/app.js"></script>
 
-
   <script>
+
+    const productGrid =
+      document.getElementById("productGrid");
+
+    PRODUCTS.forEach(product => {
+
+      productGrid.innerHTML += `
+        <article class="product-card">
+
+          <a href="product.html?id=${product.id}"
+             class="product-image-wrap">
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+            >
+
+          </a>
+
+          <div class="product-info">
+
+            <div>
+              <p class="product-category">
+                ${product.category}
+              </p>
+
+              <h3>
+                ${product.name}
+              </h3>
+            </div>
+
+            <strong>
+              ${formatPrice(product.price)}
+            </strong>
+
+          </div>
+
+          <a
+            class="product-details-button"
+            href="product.html?id=${product.id}"
+          >
+            View Product
+          </a>
+
+        </article>
+      `;
+
+    });
+
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
+
+
+    const menuToggle =
+      document.getElementById("menuToggle");
+
+    const siteNav =
+      document.getElementById("siteNav");
+
+    menuToggle.addEventListener("click", () => {
+      siteNav.classList.toggle("nav-open");
+    });
 
   </script>
 

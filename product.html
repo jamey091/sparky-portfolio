@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Product | PEAK</title>
+
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="page-shell">
+
+    <header class="site-header">
+
+      <a class="brand" href="index.html">
+        PEAK
+      </a>
+
+      <nav class="site-nav">
+        <a href="index.html#shop">Shop</a>
+        <a href="index.html#about">About</a>
+      </nav>
+
+      <a class="cart-link" href="cart.html">
+        Cart (<span class="cart-count">0</span>)
+      </a>
+
+    </header>
+
+
+    <main class="product-page">
+
+      <div class="product-page-image">
+
+        <img
+          id="productImage"
+          src=""
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="product-page-info">
+
+        <p
+          class="product-category"
+          id="productCategory"
+        ></p>
+
+        <h1 id="productName"></h1>
+
+        <p
+          class="product-price"
+          id="productPrice"
+        ></p>
+
+        <p
+          class="product-description"
+          id="productDescription"
+        ></p>
+
+
+        <div class="size-section">
+
+          <p>
+            Select size
+          </p>
+
+          <div class="size-options">
+
+            <button class="size-button" data-size="S">
+              S
+            </button>
+
+            <button
+              class="size-button active"
+              data-size="M"
+            >
+              M
+            </button>
+
+            <button class="size-button" data-size="L">
+              L
+            </button>
+
+            <button class="size-button" data-size="XL">
+              XL
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          class="purchase-button add-cart-button"
+          id="addCart"
+        >
+          Add to Cart
+        </button>
+
+
+        <button
+          class="purchase-button buy-now-button"
+          id="buyNow"
+        >
+          Buy Now
+        </button>
+
+
+        <div class="product-benefits">
+
+          <p>✓ Performance fabric</p>
+          <p>✓ Designed for movement</p>
+          <p>✓ Easy returns</p>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <div class="bag-toast" id="bagToast">
+    Added to cart
+  </div>
+
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/particles.js"></script>
+  <script src="assets/js/app.js"></script>
+
+  <script>
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const id =
+      params.get("id");
+
+    const product =
+      getProduct(id);
+
+
+    if (!product) {
+      window.location.href = "index.html";
+    }
+
+
+    document.title =
+      product.name + " | PEAK";
+
+
+    document.getElementById("productImage").src =
+      product.image;
+
+    document.getElementById("productImage").alt =
+      product.name;
+
+    document.getElementById("productCategory").textContent =
+      product.category;
+
+    document.getElementById("productName").textContent =
+      product.name;
+
+    document.getElementById("productPrice").textContent =
+      formatPrice(product.price);
+
+    document.getElementById("productDescription").textContent =
+      product.description;
+
+
+    let selectedSize = "M";
+
+
+    document.querySelectorAll(".size-button")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          document
+            .querySelectorAll(".size-button")
+            .forEach(item =>
+              item.classList.remove("active")
+            );
+
+          button.classList.add("active");
+
+          selectedSize =
+            button.dataset.size;
+
+        });
+
+      });
+
+
+    const toast =
+      document.getElementById("bagToast");
+
+
+    document
+      .getElementById("addCart")
+      .addEventListener("click", () => {
+
+        addToCart(
+          product.id,
+          selectedSize
+        );
+
+        toast.textContent =
+          product.name + " added to cart";
+
+        toast.classList.add("show");
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 1600);
+
+      });
+
+
+    document
+      .getElementById("buyNow")
+      .addEventListener("click", () => {
+
+        localStorage.setItem(
+          "peakBuyNow",
+          JSON.stringify({
+            id: product.id,
+            size: selectedSize,
+            quantity: 1
+          })
+        );
+
+        window.location.href =
+          "checkout.html?mode=buy";
+
+      });
+
+  </script>
+
+</body>
+</html>
